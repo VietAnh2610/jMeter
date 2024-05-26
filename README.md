@@ -51,8 +51,8 @@ Dưới đây là các thông số thu thập được từ quá trình kiểm t
 
 | Label     | # Samples | Average (ms) | Median (ms) | 90% Line (ms) | 95% Line (ms) | 99% Line (ms) | Min (ms) | Max (ms) | Error % | Throughput (requests/sec) | Received KB/sec | Sent KB/sec |
 |-----------|-----------|--------------|-------------|---------------|---------------|---------------|----------|----------|---------|---------------------------|-----------------|-------------|
-| vnnetPage | 2000      | 2871         | 2049        | 6517          | 7437          | 8210          | 136      | 27597    | 0.00%   | 3.9/sec                   | 509.29          | 0.87        |
-| TOTAL     | 2000      | 2871         | 2049        | 6517          | 7437          | 8210          | 136      | 27597    | 0.00%   | 3.9/sec                   | 509.29          | 0.87        |
+| vnnetPage | 1000      | 2871         | 2049        | 6517          | 7437          | 8210          | 136      | 27597    | 0.00%   | 3.9/sec                   | 509.29          | 0.87        |
+| TOTAL     | 1000      | 2871         | 2049        | 6517          | 7437          | 8210          | 136      | 27597    | 0.00%   | 3.9/sec                   | 509.29          | 0.87        |
 
 ![image](https://github.com/VietAnh2610/jMeter/assets/129382437/d36d3b55-111a-40f1-ac49-28066c72fb67)
 ![image](https://github.com/VietAnh2610/jMeter/assets/129382437/abeb7661-fcde-4f8b-a1c6-c38ae5f2fcb3)
