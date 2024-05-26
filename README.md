@@ -96,9 +96,89 @@ Dưới đây là các thông số thu thập được từ quá trình kiểm t
 12. **Dung lượng gửi (Sent KB/sec)**:
     - Tốc độ gửi dữ liệu trung bình là 0.87 KB/giây.
 
+#### Trang web dantri.com.vn
+![image](https://github.com/VietAnh2610/jMeter/assets/129382437/f1a46fee-3754-44cf-be3d-8ba273643e3f)
+![image](https://github.com/VietAnh2610/jMeter/assets/129382437/55a1d0bc-bba9-46a0-9358-3b88e87a6e61)
+![image](https://github.com/VietAnh2610/jMeter/assets/129382437/a5ca5b7e-f90d-493a-9857-bf17b4b708e0)
+
+
+1. **Mở JMeter**: Khởi động JMeter và tạo một test plan mới.
+2. **Thêm Thread Group**:
+   - Chuột phải vào Test Plan, chọn `Add` -> `Threads (Users)` -> `Thread Group`.
+   - Cấu hình Thread Group với số lượng người dùng là 50, thời gian khởi động là 10 giây và số lần lặp lại là 10.
+3. **Thêm HTTP Request Defaults**:
+   - Chuột phải vào Thread Group, chọn `Add` -> `Config Element` -> `HTTP Request Defaults`.
+   - Cấu hình: Server Name or IP: `dantri.com.vn`, Protocol: `http`.
+4. **Thêm HTTP Request**:
+   - Chuột phải vào Thread Group, chọn `Add` -> `Sampler` -> `HTTP Request`.
+   - Đặt tên là "Homepage Request" và cấu hình Path: `/`.
+5. **Thêm Listener để thu thập kết quả**:
+   - Chuột phải vào Thread Group, chọn `Add` -> `Listener` -> `View Results in Table`.
+   - Chuột phải vào Thread Group, chọn `Add` -> `Listener` -> `Summary Report`.
+
+## Kết quả kiểm tra
+### Trang web dantri.com.vn
+
+| Label    | # Samples | Average (ms) | Median (ms) | 90% Line (ms) | 95% Line (ms) | 99% Line (ms) | Min (ms) | Max (ms) | Error % | Throughput (requests/sec) | Received KB/sec | Sent KB/sec |
+|----------|-----------|--------------|-------------|---------------|---------------|---------------|----------|----------|---------|---------------------------|-----------------|-------------|
+| Dantri   | 1000      | 4507         | 4607        | 7367          | 7509          | 8301          | 415      | 9440     | 96.90%  | 98.2/sec                  | 1810.76         | 22.25       |
+| TOTAL    | 1000      | 4507         | 4607        | 7367          | 7509          | 8301          | 415      | 9440     | 96.90%  | 98.2/sec                  | 1810.76         | 22.25       |
+
+### Phân tích kết quả
+
+#### Trang web vietnamnet.vn
+
+- **Thời gian phản hồi trung bình (Average)**: 2871 ms
+- **Thời gian phản hồi trung vị (Median)**: 2049 ms
+- **90% Line**: 6517 ms
+- **95% Line**: 7437 ms
+- **99% Line**: 8210 ms
+- **Thời gian phản hồi nhỏ nhất (Min)**: 136 ms
+- **Thời gian phản hồi lớn nhất (Max)**: 27597 ms
+- **Tỷ lệ lỗi (Error %)**: 0.00%
+- **Thông lượng (Throughput)**: 3.9 requests/giây
+- **Dung lượng nhận (Received KB/sec)**: 509.29 KB/giây
+- **Dung lượng gửi (Sent KB/sec)**: 0.87 KB/giây
+
+#### Trang web dantri.com.vn
+
+- **Thời gian phản hồi trung bình (Average)**: 4507 ms
+- **Thời gian phản hồi trung vị (Median)**: 4607 ms
+- **90% Line**: 7367 ms
+- **95% Line**: 7509 ms
+- **99% Line**: 8301 ms
+- **Thời gian phản hồi nhỏ nhất (Min)**: 415 ms
+- **Thời gian phản hồi lớn nhất (Max)**: 9440 ms
+- **Tỷ lệ lỗi (Error %)**: 96.90%
+- **Thông lượng (Throughput)**: 98.2 requests/giây
+- **Dung lượng nhận (Received KB/sec)**: 1810.76 KB/giây
+- **Dung lượng gửi (Sent KB/sec)**: 22.25 KB/giây
+
+### So sánh kết quả
+
+1. **Thời gian phản hồi trung bình**:
+   - vietnamnet.vn: 2871 ms
+   - dantri.com.vn: 4507 ms
+
+   -> vietnamnet.vn có thời gian phản hồi trung bình tốt hơn dantri.com.vn.
+
+2. **Tỷ lệ lỗi**:
+   - vietnamnet.vn: 0.00%
+   - dantri.com.vn: 96.90%
+
+   -> vietnamnet.vn không có lỗi trong quá trình kiểm tra, trong khi đó, dantri.com.vn có tỷ lệ lỗi rất cao (96.90%).
+
+3. **Thông lượng**:
+   - vietnamnet.vn: 3.9 requests/giây
+   - dantri.com.vn: 98.2 requests/giây
+
+   -> dantri.com.vn có thông lượng cao hơn vietnamnet.vn, nhưng lại đi kèm với tỷ lệ lỗi rất cao.
+
 ### Kết luận
 
-Trang web vietnamnet.vn có hiệu năng khá tốt khi thời gian phản hồi trung bình là 2871 ms và không có yêu cầu nào bị lỗi (tỷ lệ lỗi là 0.00%). Thông lượng của trang web là 3.9 requests/giây. Tuy nhiên, thời gian phản hồi tối đa lên đến 27597 ms, cho thấy có một số yêu cầu có thời gian phản hồi rất cao, có thể cần kiểm tra thêm để tìm hiểu nguyên nhân và tối ưu hóa hiệu năng.
+Dựa trên kết quả kiểm tra hiệu năng, trang web vietnamnet.vn có hiệu năng tốt hơn so với trang web dantri.com.vn. vietnamnet.vn có thời gian phản hồi trung bình thấp hơn và không có lỗi trong quá trình kiểm tra. Mặc dù dantri.com.vn có thông lượng cao hơn, nhưng tỷ lệ lỗi rất cao cho thấy trang web này gặp vấn đề về khả năng chịu tải.
+
+
 
 
  
